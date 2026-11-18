@@ -10,14 +10,14 @@ app.use(cors());
 app.use(express.json());
 
 //Database Connection
-mongoose.connect(process.env.Mongo_URI)
+mongoose.connect("mongodb://localhost:27017/studentDB")
     .then(() => console.log("MongoDB Connected"))
     .catch(err => console.log("DB mongoose.Connection Error:",err));
 //Routes
 app.use('/api/auth',require('./routes/authRoutes'));
 app.use('/api/expenses',require('./routes/expenseRoutes'));
 
-const PORT = process.env.PORT || 5000;
+const PORT = 5000;
 app.listen(PORT, () => {
      console.log(`Server running on  http://localhost:${PORT}`)
 });
